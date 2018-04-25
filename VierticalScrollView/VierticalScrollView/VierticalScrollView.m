@@ -102,8 +102,15 @@
 }
 
 - (void)setDataWithIndex:(int)index{
-    NSArray *array = self.titles[index];
-    NSArray *typeArray = self.types[index];
+    NSArray *array = [NSArray array];
+    NSArray *typeArray = [NSArray array];
+    if (index >= self.titles.count || index >= self.types.count) {
+        self.index = 0;
+        return;
+    }else{
+        array = self.titles[index];
+        typeArray = self.types[index];
+    }
     //根据单双数设置单行和双行Label的显示和隐藏
     if (array.count==1) {
         self.firstLabel.text = array[0];
